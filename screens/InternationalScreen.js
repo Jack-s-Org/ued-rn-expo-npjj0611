@@ -12,11 +12,9 @@ import Feather from "@expo/vector-icons/Feather";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import * as Font from "expo-font";
 
-const strafelolImage = require("@/assets/images/Strafelol-icon.png");
-const lckLogo = require("@/assets/images/league logo/LCK-logo.jpg");
-const lecLogo = require("@/assets/images/league logo/LEC-logo.jpg");
-const lplLogo = require("@/assets/images/league logo/LPL-logo.jpg");
-const lcsLogo = require("@/assets/images/league logo/LCS-logo.png");
+const strafelolpurpleImage = require("@/assets/images/Strafelol-icon-purple.png");
+const worldsLogo = require("@/assets/images/league logo/Worlds-logo.jpg");
+const msiLogo = require("@/assets/images/league logo/MSI-logo.jpg");
 const lckIcon = require("@/assets/images/league logo/LCK-icon.png");
 const lecIcon = require("@/assets/images/league logo/LEC-icon.png");
 const lplIcon = require("@/assets/images/league logo/LPL-icon.png");
@@ -30,18 +28,20 @@ const loadFonts = async () => {
   });
 };
 
-const HomeScreen = ({ navigation }) => {
+const InternationalScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.textRegularHeader}>REGIONAL LEAGUES</Text>
+        <Text style={[styles.textRegularHeader, { width: 248 }]}>
+          INTERNATIONAL EVENTS
+        </Text>
         <Feather name="chevron-down" size={24} color="white" />
       </View>
       <View style={styles.strafelolContainer}>
         {/* <SwipeableCarouselNormalHorizontal></SwipeableCarouselNormalHorizontal> */}
-        <Image source={strafelolImage} style={styles.strafelolImage} />
-        <Image source={strafelolImage} style={styles.strafelolImage} />
-        <Image source={strafelolImage} style={styles.strafelolImage} />
+        <Image source={strafelolpurpleImage} style={styles.strafelolImage} />
+        <Image source={strafelolpurpleImage} style={styles.strafelolImage} />
+        <Image source={strafelolpurpleImage} style={styles.strafelolImage} />
       </View>
       <View style={[styles.leaguefollowedContainer, { marginBottom: 24 }]}>
         <Text style={[styles.textRegularSmall, { marginBottom: 8 }]}>
@@ -54,19 +54,13 @@ const HomeScreen = ({ navigation }) => {
               { marginRight: 24, flexShrink: 1 },
             ]}
           >
-            04/08
+            02/05
           </Text>
           <View style={styles.leagueLogoContainer}>
-            <Image source={lckLogo} style={styles.leagueLogo} />
+            <Image source={worldsLogo} style={styles.leagueLogo} />
           </View>
           <View style={styles.leagueLogoContainer}>
-            <Image source={lecLogo} style={styles.leagueLogo} />
-          </View>
-          <View style={styles.leagueLogoContainer}>
-            <Image source={lplLogo} style={styles.leagueLogo} />
-          </View>
-          <View style={styles.leagueLogoContainer}>
-            <Image source={lcsLogo} style={styles.leagueLogo} />
+            <Image source={msiLogo} style={styles.leagueLogo} />
           </View>
         </View>
       </View>
@@ -133,9 +127,7 @@ const HomeScreen = ({ navigation }) => {
 
         <View style={styles.morebuttonContainer}>
           <FontAwesome6 name="arrow-right" size={28} color="black" />
-          <TouchableOpacity
-            onPress={() => navigation.navigate("InternationalScreen")}
-          >
+          <TouchableOpacity onPress={() => alert("Button pressed!")}>
             <Text style={styles.morebuttonText}>MORE</Text>
           </TouchableOpacity>
         </View>
@@ -279,4 +271,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default InternationalScreen;
