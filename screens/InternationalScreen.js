@@ -15,10 +15,10 @@ import * as Font from "expo-font";
 const strafelolpurpleImage = require("@/assets/images/Strafelol-icon-purple.png");
 const worldsLogo = require("@/assets/images/league logo/Worlds-logo.jpg");
 const msiLogo = require("@/assets/images/league logo/MSI-logo.jpg");
-const lckIcon = require("@/assets/images/league logo/LCK-icon.png");
-const lecIcon = require("@/assets/images/league logo/LEC-icon.png");
-const lplIcon = require("@/assets/images/league logo/LPL-icon.png");
-const lcsIcon = require("@/assets/images/league logo/LCS-icon.png");
+const worldsIcon = require("@/assets/images/league logo/Worlds-icon.png");
+const msiIcon = require("@/assets/images/league logo/MSI-icon.png");
+const ewcIcon = require("@/assets/images/league logo/EWC-icon.png");
+const rrIcon = require("@/assets/images/league logo/RR-icon.png");
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -71,63 +71,63 @@ const InternationalScreen = () => {
       >
         <View style={styles.leagueframeContainer}>
           <View style={styles.leagueIconContainer}>
-            <Image source={lckIcon} style={styles.leagueIcon}></Image>
+            <Image source={worldsIcon} style={styles.leagueIcon}></Image>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>SUMMER PLAYOFFS</Text>
+            <Text style={[styles.textRegularMediumDark]}>PLAY-IN STAGE</Text>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>28 AUG</Text>
+            <Text style={[styles.textRegularHeaderDark]}>25 SEP</Text>
           </View>
         </View>
 
         <View style={styles.leagueframeContainer}>
           <View style={styles.leagueIconContainer}>
-            <Image source={lplIcon} style={styles.leagueIcon}></Image>
+            <Image source={msiIcon} style={styles.leagueIcon}></Image>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>SUMMER PLAYOFFS</Text>
+            <Text style={[styles.textRegularMediumDark]}>EVENT CONCLUDED</Text>
           </View>
           <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>30 AUG</Text>
+            <Text style={[styles.textBoldXSmallGrey]}>LAST MATCH</Text>
+            <Text style={[styles.textRegularHeaderDark]}>19 MAY</Text>
           </View>
         </View>
 
         <View style={styles.leagueframeContainer}>
           <View style={styles.leagueIconContainer}>
-            <Image source={lecIcon} style={styles.leagueIcon}></Image>
+            <Image source={ewcIcon} style={styles.leagueIcon}></Image>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>SEASON FINALS</Text>
+            <Text style={[styles.textRegularMediumDark]}>EVENT CONCLUDED</Text>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>01 SEP</Text>
+            <Text style={[styles.textRegularHeaderDark]}>08 JUL</Text>
           </View>
         </View>
 
         <View style={styles.leagueframeContainer}>
           <View style={styles.leagueIconContainer}>
-            <Image source={lcsIcon} style={styles.leagueIcon}></Image>
+            <Image source={rrIcon} style={styles.leagueIcon}></Image>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>CHAMPIONSHIP</Text>
+            <Text style={[styles.textRegularMediumDark]}>EVENT CONCLUDED</Text>
           </View>
           <View style={styles.seasoninfoContainer}>
             <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>31 AUG</Text>
+            <Text style={[styles.textRegularHeaderDark]}>07 JUL</Text>
           </View>
         </View>
 
         <View style={styles.morebuttonContainer}>
           <FontAwesome6 name="arrow-right" size={28} color="black" />
-          <TouchableOpacity onPress={() => alert("Button pressed!")}>
+          <TouchableOpacity onPress={() => alert("Coming Soon")}>
             <Text style={styles.morebuttonText}>MORE</Text>
           </TouchableOpacity>
         </View>
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     fontFamily: "PPTelegraf-Regular",
     color: "#0A1118",
     fontSize: 16,
-    width: 84,
+    width: 100,
   },
   textBoldXSmallGrey: {
     fontFamily: "PPTelegraf-UltraBold",

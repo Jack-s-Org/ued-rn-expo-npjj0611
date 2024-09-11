@@ -14,9 +14,27 @@ import SettingsScreen from "./SettingsScreen";
 import AddScreen from "./AddScreen";
 
 const MainStacks = createNativeStackNavigator();
+const HomeStacks = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Empty = () => null;
+
+const HomeScreens = () => {
+  return (
+    <HomeStacks.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStacks.Screen
+        name="Regional"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <HomeStacks.Screen
+        name="International"
+        component={InternationalScreen}
+        options={{ animation: "slide_from_bottom" }}
+      />
+    </HomeStacks.Navigator>
+  );
+};
 
 const MainTabs = ({ navigation }) => {
   const [unreadCount, setUnreadCount] = useState(3);
@@ -29,7 +47,7 @@ const MainTabs = ({ navigation }) => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeScreens}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
@@ -46,17 +64,6 @@ const MainTabs = ({ navigation }) => {
             <Ionicons name="search" size={size} color={color} />
           ),
           tabBarLabel: "Discover",
-        }}
-      />
-
-      <Tab.Screen
-        name="International"
-        component={InternationalScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" size={size} color={color} />
-          ),
-          tabBarLabel: "International",
         }}
       />
 
@@ -98,11 +105,6 @@ const MainScreens = () => {
         name="MainTabs"
         component={MainTabs}
         options={{ headerShown: false }}
-      />
-      <MainStacks.Screen
-        name="International"
-        component={InternationalScreen}
-        options={{ animation: "fade_from_bottom" }}
       />
       <MainStacks.Screen
         name="Settings"

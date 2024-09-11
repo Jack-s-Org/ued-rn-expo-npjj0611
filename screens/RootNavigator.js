@@ -12,10 +12,6 @@ const RootNavigator = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Main" component={MainScreens} />
-        <Stack.Screen
-          name="InternationalScreen"
-          component={InternationalScreen}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );

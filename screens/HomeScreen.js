@@ -4,7 +4,6 @@ import {
   Text,
   View,
   ScrollView,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,7 +25,6 @@ const loadFonts = async () => {
   await Font.loadAsync({
     "PPTelegraf-Regular": require("@/assets/fonts/PPTelegraf-Regular.otf"),
     "PPTelegraf-UltraBold": require("@/assets/fonts/PPTelegraf-UltraBold.otf"),
-    // Add more fonts here if needed
   });
 };
 
@@ -38,7 +36,6 @@ const HomeScreen = ({ navigation }) => {
         <Feather name="chevron-down" size={24} color="white" />
       </View>
       <View style={styles.strafelolContainer}>
-        {/* <SwipeableCarouselNormalHorizontal></SwipeableCarouselNormalHorizontal> */}
         <Image source={strafelolImage} style={styles.strafelolImage} />
         <Image source={strafelolImage} style={styles.strafelolImage} />
         <Image source={strafelolImage} style={styles.strafelolImage} />
@@ -134,7 +131,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.morebuttonContainer}>
           <FontAwesome6 name="arrow-right" size={28} color="black" />
           <TouchableOpacity
-            onPress={() => navigation.navigate("InternationalScreen")}
+            onPress={() => navigation.navigate("International")}
           >
             <Text style={styles.morebuttonText}>MORE</Text>
           </TouchableOpacity>
