@@ -9,6 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import MeScreen from "./MeScreen";
 import DiscoverScreen from "./DiscoverScreen";
 import InternationalScreen from "./InternationalScreen";
+import RegionalScreen from "./RegionalScreen";
 import AppDrawer from "./AppDrawer";
 import SettingsScreen from "./SettingsScreen";
 import AddScreen from "./AddScreen";
@@ -23,9 +24,14 @@ const HomeScreens = () => {
   return (
     <HomeStacks.Navigator screenOptions={{ headerShown: false }}>
       <HomeStacks.Screen
-        name="Regional"
+        name="Home"
         component={HomeScreen}
         options={{ headerShown: false }}
+      />
+      <HomeStacks.Screen
+        name="Regional"
+        component={RegionalScreen}
+        options={{ animation: "slide_from_bottom" }}
       />
       <HomeStacks.Screen
         name="International"

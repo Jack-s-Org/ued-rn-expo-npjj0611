@@ -12,26 +12,27 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import * as Font from "expo-font";
 import SwipeDetector from "@/components/SwipeDetector/SwipeDetectorUpDown";
 
-const strafelolpurpleImage = require("@/assets/images/Strafelol-icon-purple.png");
-const worldsLogo = require("@/assets/images/league logo/Worlds-logo.jpg");
-const msiLogo = require("@/assets/images/league logo/MSI-logo.jpg");
-const worldsIcon = require("@/assets/images/league logo/Worlds-icon.png");
-const msiIcon = require("@/assets/images/league logo/MSI-icon.png");
-const ewcIcon = require("@/assets/images/league logo/EWC-icon.png");
-const rrIcon = require("@/assets/images/league logo/RR-icon.png");
+const strafelolImage = require("@/assets/images/Strafelol-icon.png");
+const lckLogo = require("@/assets/images/league logo/LCK-logo.jpg");
+const lecLogo = require("@/assets/images/league logo/LEC-logo.jpg");
+const lplLogo = require("@/assets/images/league logo/LPL-logo.jpg");
+const lcsLogo = require("@/assets/images/league logo/LCS-logo.png");
+const lckIcon = require("@/assets/images/league logo/LCK-icon.png");
+const lecIcon = require("@/assets/images/league logo/LEC-icon.png");
+const lplIcon = require("@/assets/images/league logo/LPL-icon.png");
+const lcsIcon = require("@/assets/images/league logo/LCS-icon.png");
 
 const loadFonts = async () => {
   await Font.loadAsync({
     "PPTelegraf-Regular": require("@/assets/fonts/PPTelegraf-Regular.otf"),
     "PPTelegraf-UltraBold": require("@/assets/fonts/PPTelegraf-UltraBold.otf"),
-    // Add more fonts here if needed
   });
 };
 
-const InternationalScreen = ({ navigation }) => {
+const RegionalScreen = ({ navigation }) => {
   const handleSwipe = (directionY) => {
     if (directionY === "up" || directionY === "down") {
-      navigation.navigate("Regional");
+      navigation.navigate("International");
     }
   };
 
@@ -40,25 +41,16 @@ const InternationalScreen = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.container}>
           <View style={styles.headerContainer}>
-            <Text style={[styles.textRegularHeader, { width: 248 }]}>
-              INTERNATIONAL EVENTS
-            </Text>
+            <Text style={styles.textRegularHeader}>REGIONAL LEAGUES</Text>
             <Feather name="chevron-down" size={24} color="white" />
           </View>
+
           <View style={styles.strafelolContainer}>
-            <Image
-              source={strafelolpurpleImage}
-              style={styles.strafelolImage}
-            />
-            <Image
-              source={strafelolpurpleImage}
-              style={styles.strafelolImage}
-            />
-            <Image
-              source={strafelolpurpleImage}
-              style={styles.strafelolImage}
-            />
+            <Image source={strafelolImage} style={styles.strafelolImage} />
+            <Image source={strafelolImage} style={styles.strafelolImage} />
+            <Image source={strafelolImage} style={styles.strafelolImage} />
           </View>
+
           <View style={[styles.leaguefollowedContainer, { marginBottom: 24 }]}>
             <Text style={[styles.textRegularSmall, { marginBottom: 8 }]}>
               Leagues Followed
@@ -70,16 +62,23 @@ const InternationalScreen = ({ navigation }) => {
                   { marginRight: 24, flexShrink: 1 },
                 ]}
               >
-                02/05
+                04/08
               </Text>
               <View style={styles.leagueLogoContainer}>
-                <Image source={worldsLogo} style={styles.leagueLogo} />
+                <Image source={lckLogo} style={styles.leagueLogo} />
               </View>
               <View style={styles.leagueLogoContainer}>
-                <Image source={msiLogo} style={styles.leagueLogo} />
+                <Image source={lecLogo} style={styles.leagueLogo} />
+              </View>
+              <View style={styles.leagueLogoContainer}>
+                <Image source={lplLogo} style={styles.leagueLogo} />
+              </View>
+              <View style={styles.leagueLogoContainer}>
+                <Image source={lcsLogo} style={styles.leagueLogo} />
               </View>
             </View>
           </View>
+
           <ScrollView
             horizontal={true}
             contentContainerStyle={styles.leagueScrollContentContainer}
@@ -87,71 +86,71 @@ const InternationalScreen = ({ navigation }) => {
           >
             <View style={styles.leagueframeContainer}>
               <View style={styles.leagueIconContainer}>
-                <Image source={worldsIcon} style={styles.leagueIcon}></Image>
+                <Image source={lckIcon} style={styles.leagueIcon}></Image>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
                 <Text style={[styles.textRegularMediumDark]}>
-                  PLAY-IN STAGE
+                  SUMMER PLAYOFFS
                 </Text>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-                <Text style={[styles.textRegularHeaderDark]}>25 SEP</Text>
+                <Text style={[styles.textRegularHeaderDark]}>28 AUG</Text>
               </View>
             </View>
 
             <View style={styles.leagueframeContainer}>
               <View style={styles.leagueIconContainer}>
-                <Image source={msiIcon} style={styles.leagueIcon}></Image>
+                <Image source={lplIcon} style={styles.leagueIcon}></Image>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
                 <Text style={[styles.textRegularMediumDark]}>
-                  EVENT CONCLUDED
+                  SUMMER PLAYOFFS
                 </Text>
               </View>
               <View style={styles.seasoninfoContainer}>
-                <Text style={[styles.textBoldXSmallGrey]}>LAST MATCH</Text>
-                <Text style={[styles.textRegularHeaderDark]}>19 MAY</Text>
+                <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
+                <Text style={[styles.textRegularHeaderDark]}>30 AUG</Text>
               </View>
             </View>
 
             <View style={styles.leagueframeContainer}>
               <View style={styles.leagueIconContainer}>
-                <Image source={ewcIcon} style={styles.leagueIcon}></Image>
+                <Image source={lecIcon} style={styles.leagueIcon}></Image>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
                 <Text style={[styles.textRegularMediumDark]}>
-                  EVENT CONCLUDED
+                  SEASON FINALS
                 </Text>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-                <Text style={[styles.textRegularHeaderDark]}>08 JUL</Text>
+                <Text style={[styles.textRegularHeaderDark]}>01 SEP</Text>
               </View>
             </View>
 
             <View style={styles.leagueframeContainer}>
               <View style={styles.leagueIconContainer}>
-                <Image source={rrIcon} style={styles.leagueIcon}></Image>
+                <Image source={lcsIcon} style={styles.leagueIcon}></Image>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-                <Text style={[styles.textRegularMediumDark]}>
-                  EVENT CONCLUDED
-                </Text>
+                <Text style={[styles.textRegularMediumDark]}>CHAMPIONSHIP</Text>
               </View>
               <View style={styles.seasoninfoContainer}>
                 <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-                <Text style={[styles.textRegularHeaderDark]}>07 JUL</Text>
+                <Text style={[styles.textRegularHeaderDark]}>31 AUG</Text>
               </View>
             </View>
 
             <View style={styles.morebuttonContainer}>
               <FontAwesome6 name="arrow-right" size={28} color="black" />
-              <TouchableOpacity onPress={() => alert("Coming Soon")}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("International")}
+              >
                 <Text style={styles.morebuttonText}>MORE</Text>
               </TouchableOpacity>
             </View>
@@ -189,7 +188,7 @@ const styles = StyleSheet.create({
     fontFamily: "PPTelegraf-Regular",
     color: "#0A1118",
     fontSize: 16,
-    width: 100,
+    width: 84,
   },
   textBoldXSmallGrey: {
     fontFamily: "PPTelegraf-UltraBold",
@@ -297,4 +296,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InternationalScreen;
+export default RegionalScreen;

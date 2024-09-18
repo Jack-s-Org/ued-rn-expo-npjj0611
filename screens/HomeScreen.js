@@ -9,13 +9,18 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import * as Font from "expo-font";
+import SwipeDetector from "@/components/SwipeDetector/SwipeDetectorUpDown";
 
 const strafelolImage = require("@/assets/images/Strafelol-icon.png");
-const lckLogo = require("@/assets/images/league logo/LCK-logo.jpg");
-const lecLogo = require("@/assets/images/league logo/LEC-logo.jpg");
-const lplLogo = require("@/assets/images/league logo/LPL-logo.jpg");
-const lcsLogo = require("@/assets/images/league logo/LCS-logo.png");
+const g2Logo = require("@/assets/images/teams logo/G2-Logo.jpg");
+const t1Logo = require("@/assets/images/teams logo/T1-Logo.jpeg");
+const drxLogo = require("@/assets/images/teams logo/DRX-Logo.jpg");
+const mainMatchFrame = require("@/assets/images/image frames/MainMatchFrame.png");
+const miniMatchFrame1 = require("@/assets/images/image frames/MiniMatchFrame1.png");
+const miniMatchFrame2 = require("@/assets/images/image frames/MiniMatchFrame2.png");
+const miniMatchFrame3 = require("@/assets/images/image frames/MiniMatchFrame3.png");
 const lckIcon = require("@/assets/images/league logo/LCK-icon.png");
 const lecIcon = require("@/assets/images/league logo/LEC-icon.png");
 const lplIcon = require("@/assets/images/league logo/LPL-icon.png");
@@ -29,129 +34,114 @@ const loadFonts = async () => {
 };
 
 const HomeScreen = ({ navigation }) => {
+  const handleSwipe = (directionY) => {
+    if (directionY === "up" || directionY === "down") {
+      navigation.navigate("International");
+    }
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.textRegularHeader}>REGIONAL LEAGUES</Text>
-        <Feather name="chevron-down" size={24} color="white" />
-      </View>
-      <View style={styles.strafelolContainer}>
-        <Image source={strafelolImage} style={styles.strafelolImage} />
-        <Image source={strafelolImage} style={styles.strafelolImage} />
-        <Image source={strafelolImage} style={styles.strafelolImage} />
-      </View>
-      <View style={[styles.leaguefollowedContainer, { marginBottom: 24 }]}>
-        <Text style={[styles.textRegularSmall, { marginBottom: 8 }]}>
-          Leagues Followed
-        </Text>
-        <View style={styles.leaguefollowedminiContainer}>
-          <Text
+    <SwipeDetector onSwipe={handleSwipe}>
+      <View style={{ flex: 1 }}>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.headerContainer}>
+            <Text style={styles.textRegularHeader2XL}>League of Legends</Text>
+            <View style={styles.headerarrowContainer}>
+              <Text
+                style={[
+                  styles.textRegularHeader2XL,
+                  { marginRight: 12 },
+                  { color: "#A3AAB1" },
+                ]}
+              >
+                Feed
+              </Text>
+              <AntDesign name="caretdown" size={20} color="#A3AAB1" />
+            </View>
+          </View>
+          <View
             style={[
-              styles.textRegularHeader,
-              { marginRight: 24, flexShrink: 1 },
+              styles.teamsfollowedContainer,
+              { marginBottom: 24 },
+              { marginLeft: 20 },
             ]}
           >
-            04/08
-          </Text>
-          <View style={styles.leagueLogoContainer}>
-            <Image source={lckLogo} style={styles.leagueLogo} />
+            <Text style={[styles.textRegularHeaderM, { marginBottom: 12 }]}>
+              Teams You Follow
+            </Text>
+            <View style={styles.teamsfollowedminiContainer}>
+              <View style={[styles.teamsLogoContainer, { marginLeft: 4 }]}>
+                <Image source={t1Logo} style={styles.teamLogo} />
+              </View>
+              <View style={styles.teamsLogoContainer}>
+                <Image source={g2Logo} style={styles.teamLogo} />
+              </View>
+              <View style={styles.teamsLogoContainer}>
+                <Image source={drxLogo} style={styles.teamLogo} />
+              </View>
+            </View>
           </View>
-          <View style={styles.leagueLogoContainer}>
-            <Image source={lecLogo} style={styles.leagueLogo} />
+
+          <View style={styles.upcomingContainer}>
+            <Text
+              style={[
+                styles.textRegularHeaderL,
+                { width: 192 },
+                { marginBottom: 12 },
+              ]}
+            >
+              Upcoming Matches
+            </Text>
+            <ScrollView
+              horizontal={true}
+              contentContainerStyle={styles.frameScrollContentContainer}
+              showsHorizontalScrollIndicator={false}
+            >
+              <Image source={mainMatchFrame} style={[{ marginRight: 12 }]} />
+              <Image source={miniMatchFrame1} style={[{ marginRight: 12 }]} />
+              <Image source={miniMatchFrame2} style={[{ marginRight: 12 }]} />
+              <Image source={miniMatchFrame3} style={[{ marginRight: 12 }]} />
+              <View style={styles.morebuttonContainer}>
+                <FontAwesome6 name="arrow-right" size={28} color="black" />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Regional")}
+                >
+                  <Text style={styles.morebuttonText}>MORE</Text>
+                </TouchableOpacity>
+              </View>
+            </ScrollView>
           </View>
-          <View style={styles.leagueLogoContainer}>
-            <Image source={lplLogo} style={styles.leagueLogo} />
-          </View>
-          <View style={styles.leagueLogoContainer}>
-            <Image source={lcsLogo} style={styles.leagueLogo} />
-          </View>
-        </View>
+        </SafeAreaView>
       </View>
-      <ScrollView
-        horizontal={true}
-        contentContainerStyle={styles.leagueScrollContentContainer}
-        showsHorizontalScrollIndicator={false}
-      >
-        <View style={styles.leagueframeContainer}>
-          <View style={styles.leagueIconContainer}>
-            <Image source={lckIcon} style={styles.leagueIcon}></Image>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>SUMMER PLAYOFFS</Text>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>28 AUG</Text>
-          </View>
-        </View>
-
-        <View style={styles.leagueframeContainer}>
-          <View style={styles.leagueIconContainer}>
-            <Image source={lplIcon} style={styles.leagueIcon}></Image>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>SUMMER PLAYOFFS</Text>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>30 AUG</Text>
-          </View>
-        </View>
-
-        <View style={styles.leagueframeContainer}>
-          <View style={styles.leagueIconContainer}>
-            <Image source={lecIcon} style={styles.leagueIcon}></Image>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>SEASON FINALS</Text>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>01 SEP</Text>
-          </View>
-        </View>
-
-        <View style={styles.leagueframeContainer}>
-          <View style={styles.leagueIconContainer}>
-            <Image source={lcsIcon} style={styles.leagueIcon}></Image>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>CURRENT</Text>
-            <Text style={[styles.textRegularMediumDark]}>CHAMPIONSHIP</Text>
-          </View>
-          <View style={styles.seasoninfoContainer}>
-            <Text style={[styles.textBoldXSmallGrey]}>NEXT MATCH</Text>
-            <Text style={[styles.textRegularHeaderDark]}>31 AUG</Text>
-          </View>
-        </View>
-
-        <View style={styles.morebuttonContainer}>
-          <FontAwesome6 name="arrow-right" size={28} color="black" />
-          <TouchableOpacity
-            onPress={() => navigation.navigate("International")}
-          >
-            <Text style={styles.morebuttonText}>MORE</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    </SwipeDetector>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    alignItems: "center",
+    // alignItems: "center",
     backgroundColor: "#0F1A24",
   },
-  textRegularHeader: {
+  textRegularHeader2XL: {
+    fontFamily: "PPTelegraf-Regular",
+    color: "white",
+    fontSize: 60,
+  },
+  textRegularHeaderL: {
     fontFamily: "PPTelegraf-Regular",
     color: "white",
     fontSize: 40,
+  },
+  textRegularHeaderML: {
+    fontFamily: "PPTelegraf-Regular",
+    color: "white",
+    fontSize: 28,
+  },
+  textRegularHeaderM: {
+    fontFamily: "PPTelegraf-Regular",
+    color: "white",
+    fontSize: 24,
   },
   textRegularHeaderDark: {
     fontFamily: "PPTelegraf-Regular",
@@ -177,34 +167,40 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   headerContainer: {
-    width: 353,
-    flexDirection: "row",
+    width: 276,
+    flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "flex-start",
+    marginLeft: 20,
   },
-  strafelolContainer: {
+  headerarrowContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    marginTop: 32,
+    marginTop: 4,
   },
-  strafelolImage: {
-    marginRight: 20,
+  upcomingContainer: {
+    width: 393,
+    height: 360,
+    backgroundColor: "#05090C",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    paddingBottom: 12,
+    paddingTop: 72,
+    paddingLeft: 20,
   },
-  leaguefollowedContainer: {
+  teamsfollowedContainer: {
     width: "100%",
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    paddingHorizontal: 20,
-    marginTop: 44,
+    marginTop: 60,
   },
-  leaguefollowedminiContainer: {
+  teamsfollowedminiContainer: {
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
   },
-  leagueLogoContainer: {
+  teamsLogoContainer: {
     width: 40,
     height: 40,
     borderRadius: 20, // Half of the width/height to make it ellipse
@@ -215,49 +211,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginLeft: -8, // Adjusts overlap of logos
   },
-  leagueLogo: {
+  teamLogo: {
     width: 40,
     height: 40,
     borderRadius: 20,
   },
-  leagueIcon: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    resizeMode: "contain",
-  },
-  leagueIconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#A3AAB1",
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  leagueScrollContentContainer: {
+  frameScrollContentContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
-  },
-  leagueframeContainer: {
-    width: 172,
-    height: 240,
-    borderRadius: 20,
-    backgroundColor: "white",
-    flexDirection: "column",
-    paddingLeft: 12,
-    paddingRight: 12,
-    paddingTop: 12,
-    paddingBottom: 24,
-    marginRight: 12,
-  },
-  seasoninfoContainer: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
-    marginTop: 36,
   },
   morebuttonContainer: {
     width: 120,
