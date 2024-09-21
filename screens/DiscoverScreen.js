@@ -41,7 +41,7 @@ const StreamScreen = ({ navigation }) => {
             MATCH FEED
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
-            <Feather name="chevron-down" size={24} color="white" />
+            <Feather name="chevron-down" size={32} color="white" />
           </TouchableOpacity>
         </View>
 

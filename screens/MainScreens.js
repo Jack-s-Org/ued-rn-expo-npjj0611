@@ -26,6 +26,7 @@ import AddScreen from "./AddScreen";
 import StreamScreen from "./DiscoverScreen";
 import UpcomingScreen from "./UpcomingScreen";
 import LivestreamScreen from "./LivestreamScreen";
+import FeatureIntroScreen from "./FeatureIntroScreen";
 
 const MainStacks = createNativeStackNavigator();
 const HomeStacks = createNativeStackNavigator();
@@ -81,6 +82,11 @@ const StreamScreens = () => {
         component={LivestreamScreen}
         options={{ animation: "slide_from_bottom" }}
       />
+      {/* <StreamStacks.Screen
+        name="FeatureIntro"
+        component={FeatureIntroScreen}
+        options={{ animation: "slide_from_bottom" }}
+      /> */}
     </StreamStacks.Navigator>
   );
 };
@@ -257,6 +263,14 @@ const MainScreens = () => {
         name="Settings"
         component={SettingsScreen}
         options={{ animation: "fade_from_bottom" }}
+      />
+      <MainStacks.Screen
+        name="FeatureIntro" // Add FeatureIntroScreen in MainStacks
+        component={FeatureIntroScreen}
+        options={{
+          animation: "slide_from_bottom", // Custom animation
+          headerShown: false, // Hide header if needed
+        }}
       />
     </MainStacks.Navigator>
   );

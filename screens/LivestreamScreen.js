@@ -48,7 +48,7 @@ const LivestreamScreen = ({ navigation }) => {
             Live Viewership
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Stream")}>
-            <Feather name="chevron-down" size={24} color="#0A1118" />
+            <Feather name="chevron-down" size={32} color="#0A1118" />
           </TouchableOpacity>
         </View>
         <Image source={viewershipBar}></Image>
@@ -83,7 +83,7 @@ const LivestreamScreen = ({ navigation }) => {
             showsHorizontalScrollIndicator={false}
           >
             <TouchableOpacity
-              onPress={() => navigation.navigate("Stream")}
+              onPress={() => navigation.navigate("FeatureIntro")}
               style={{ marginRight: 12 }}
             >
               <Image
