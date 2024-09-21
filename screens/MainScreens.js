@@ -30,6 +30,7 @@ import FeatureIntroScreen from "./FeatureIntroScreen";
 import SelectGamesScreen from "./SelectGamesScreen";
 import HighlightSettingScreen from "./HighlightSettingScreen";
 import MainLeague from "./MainLeague";
+import VideoStream from "./VideoStream";
 
 const MainStacks = createNativeStackNavigator();
 const HomeStacks = createNativeStackNavigator();
@@ -294,6 +295,14 @@ const MainScreens = () => {
       <MainStacks.Screen
         name="MainLeague" // Add FeatureIntroScreen in MainStacks
         component={MainLeague}
+        options={{
+          animation: "slide_from_bottom", // Custom animation
+          headerShown: false, // Hide header if needed
+        }}
+      />
+      <MainStacks.Screen
+        name="VideoStream" // Add FeatureIntroScreen in MainStacks
+        component={VideoStream}
         options={{
           animation: "slide_from_bottom", // Custom animation
           headerShown: false, // Hide header if needed

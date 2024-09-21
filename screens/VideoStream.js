@@ -14,10 +14,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Font from "expo-font";
 import SwipeDetector from "@/components/SwipeDetector/SwipeDetectorUpDown";
 
-const progressBlue = require("@/assets/images/image frames/ProgressBarBlue.png");
-const lolNoti = require("@/assets/images/image frames/LoLNotification.png");
-const valoNoti = require("@/assets/images/image frames/ValoNotification.png");
-const gameNav = require("@/assets/images/image frames/GameNav.png");
+const videoUI = require("@/assets/images/image frames/Feature-1.png");
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -26,7 +23,7 @@ const loadFonts = async () => {
   });
 };
 
-const HighlightSettingScreen = ({ navigation }) => {
+const VideoStream = ({ navigation }) => {
   const handleSwipe = (directionY) => {
     if (directionY === "up" || directionY === "down") {
       navigation.navigate("Upcoming");
@@ -37,78 +34,7 @@ const HighlightSettingScreen = ({ navigation }) => {
     <SwipeDetector onSwipe={handleSwipe}>
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.container}>
-          <View style={[styles.topNavContainer, { marginBottom: 24 }]}>
-            <Image source={gameNav}></Image>
-            <TouchableOpacity onPress={() => navigation.navigate("Livestream")}>
-              <Feather name="chevron-down" size={32} color="white" />
-            </TouchableOpacity>
-          </View>
-          <Image
-            source={progressBlue}
-            style={[{ marginBottom: 12 }, { marginLeft: 24 }]}
-          ></Image>
-          {/* <View style={styles.headerContainer}>
-              <Text style={styles.textRegularHeader2XL}>
-                Swift Match Highlight
-              </Text>
-              <View style={styles.headerarrowContainer}>
-                <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
-                  <Text
-                    style={[
-                      styles.textRegularHeader2XL,
-                      { marginRight: 12 },
-                      { color: "#A3AAB1" },
-                    ]}
-                  >
-                    Continue
-                  </Text>
-                </TouchableOpacity>
-                <AntDesign name="caretdown" size={20} color="#A3AAB1" />
-              </View>
-            </View> */}
-
-          <View style={styles.featureFrame}>
-            <View style={styles.featureTopFrame}>
-              <View style={styles.iconContainer}>
-                <View style={styles.iconFrameContainer}>
-                  <FontAwesome6 name="twitch" size={24} color="black" />
-                </View>
-                <View style={styles.iconFrameContainer}>
-                  <FontAwesome6 name="youtube" size={24} color="black" />
-                </View>
-              </View>
-              <Text style={[styles.textRegularXL, { width: 280 }]}>
-                Highlight Settings
-              </Text>
-            </View>
-            <View style={styles.featureBotFrame}>
-              <ScrollView
-                horizontal={false}
-                vertical={true}
-                contentContainerStyle={styles.matchScrollContainer}
-                showsVerticalScrollIndicator={false}
-              >
-                <Image source={lolNoti} style={[{ marginBottom: -40 }]}></Image>
-                <Image source={valoNoti}></Image>
-              </ScrollView>
-              <View style={styles.botNavContainer}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("SelectGames")}
-                >
-                  <View style={styles.nextbuttonContainer}>
-                    <FontAwesome6 name="arrow-left" size={24} color="black" />
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("VideoStream")}
-                >
-                  <View style={styles.nextbuttonContainer}>
-                    <FontAwesome6 name="arrow-right" size={24} color="black" />
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
+          <Image source={videoUI}></Image>
         </SafeAreaView>
       </View>
     </SwipeDetector>
@@ -118,7 +44,6 @@ const HighlightSettingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: "center",
     backgroundColor: "#0F1A24",
   },
   textRegularHeader2XL: {
@@ -266,4 +191,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HighlightSettingScreen;
+export default VideoStream;
