@@ -1,4 +1,14 @@
 import { useState } from "react";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
@@ -13,6 +23,8 @@ import RegionalScreen from "./RegionalScreen";
 import AppDrawer from "./AppDrawer";
 import SettingsScreen from "./SettingsScreen";
 import AddScreen from "./AddScreen";
+import MatchFeedScreen from "./MatchFeedScreen";
+import StreamScreen from "./DiscoverScreen";
 
 const MainStacks = createNativeStackNavigator();
 const HomeStacks = createNativeStackNavigator();
@@ -38,6 +50,11 @@ const HomeScreens = () => {
         component={InternationalScreen}
         options={{ animation: "slide_from_bottom" }}
       />
+      <HomeStacks.Screen
+        name="MatchFeed"
+        component={MatchFeedScreen}
+        options={{ animation: "slide_from_bottom" }}
+      />
     </HomeStacks.Navigator>
   );
 };
@@ -48,7 +65,17 @@ const MainTabs = ({ navigation }) => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#408086",
+        tabBarActiveTintColor: "#05090C",
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: "transparent",
+          position: "absolute",
+          elevation: 0, // Remove shadow on Android
+          borderTopWidth: 0, // Remove border
+          height: 80, // Increase height to fit ellipses
+          marginHorizontal: 0, // Remove horizontal margin
+          paddingHorizontal: 0, // Remove horizontal padding
+        },
       }}
     >
       <Tab.Screen
@@ -56,18 +83,62 @@ const MainTabs = ({ navigation }) => {
         component={HomeScreens}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <View
+                style={{
+                  position: "absolute",
+                  width: 108,
+                  height: 108,
+                  borderRadius: 200,
+                  backgroundColor: "#D1D5D8", // Full white color
+                  margin: 0, // Ensure no margin
+                  padding: 0, // Ensure no padding
+                }}
+              />
+              <View
+                style={{
+                  position: "absolute",
+                  width: 72,
+                  height: 72,
+                  borderRadius: 100, // This makes it circular
+                  backgroundColor: "white", // Different background color for contrast
+                }}
+              ></View>
+              <Entypo name="home" size={28} color={color} />
+            </View>
           ),
           tabBarLabel: "Home",
         }}
       />
 
       <Tab.Screen
-        name="Discover"
-        component={DiscoverScreen}
+        name="Stream"
+        component={StreamScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" size={size} color={color} />
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <View
+                style={{
+                  position: "absolute",
+                  width: 108,
+                  height: 108,
+                  borderRadius: 200,
+                  backgroundColor: "#D1D5D8", // Full white color
+                  margin: 0, // Ensure no margin
+                  padding: 0, // Ensure no padding
+                }}
+              />
+              <View
+                style={{
+                  position: "absolute",
+                  width: 72,
+                  height: 72,
+                  borderRadius: 100, // This makes it circular
+                  backgroundColor: "white", // Different background color for contrast
+                }}
+              ></View>
+              <MaterialIcons name="smart-display" size={28} color={color} />
+            </View>
           ),
           tabBarLabel: "Discover",
         }}
@@ -78,16 +149,38 @@ const MainTabs = ({ navigation }) => {
         component={NotificationsScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="chatbox" size={size} color={color} />
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <View
+                style={{
+                  position: "absolute",
+                  width: 108,
+                  height: 108,
+                  borderRadius: 200,
+                  backgroundColor: "#D1D5D8", // Full white color
+                  margin: 0, // Ensure no margin
+                  padding: 0, // Ensure no padding
+                }}
+              />
+              <View
+                style={{
+                  position: "absolute",
+                  width: 72,
+                  height: 72,
+                  borderRadius: 100, // This makes it circular
+                  backgroundColor: "white", // Different background color for contrast
+                }}
+              ></View>
+              <Ionicons name="medal" size={24} color={color} />
+            </View>
           ),
           tabBarLabel: "Inbox",
-          tabBarBadge: unreadCount,
+          // tabBarBadge: unreadCount,
         }}
-        listeners={{
-          tabPress: () => {
-            setUnreadCount(null);
-          },
-        }}
+        // listeners={{
+        //   tabPress: () => {
+        //     setUnreadCount(null);
+        //   },
+        // }}
       />
 
       <Tab.Screen
@@ -95,7 +188,29 @@ const MainTabs = ({ navigation }) => {
         component={MeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person" size={size} color={color} />
+            <View style={{ alignItems: "center", justifyContent: "center" }}>
+              <View
+                style={{
+                  position: "absolute",
+                  width: 108,
+                  height: 108,
+                  borderRadius: 200,
+                  backgroundColor: "#D1D5D8", // Full white color
+                  margin: 0, // Ensure no margin
+                  padding: 0, // Ensure no padding
+                }}
+              />
+              <View
+                style={{
+                  position: "absolute",
+                  width: 72,
+                  height: 72,
+                  borderRadius: 100, // This makes it circular
+                  backgroundColor: "white", // Different background color for contrast
+                }}
+              ></View>
+              <MaterialIcons name="person" size={28} color={color} />
+            </View>
           ),
           tabBarLabel: "Me",
         }}

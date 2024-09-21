@@ -10,10 +10,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Font from "expo-font";
 import SwipeDetector from "@/components/SwipeDetector/SwipeDetectorUpDown";
 
-const strafelolImage = require("@/assets/images/Strafelol-icon.png");
 const g2Logo = require("@/assets/images/teams logo/G2-Logo.jpg");
 const t1Logo = require("@/assets/images/teams logo/T1-Logo.jpeg");
 const drxLogo = require("@/assets/images/teams logo/DRX-Logo.jpg");
@@ -21,10 +21,17 @@ const mainMatchFrame = require("@/assets/images/image frames/MainMatchFrame.png"
 const miniMatchFrame1 = require("@/assets/images/image frames/MiniMatchFrame1.png");
 const miniMatchFrame2 = require("@/assets/images/image frames/MiniMatchFrame2.png");
 const miniMatchFrame3 = require("@/assets/images/image frames/MiniMatchFrame3.png");
-const lckIcon = require("@/assets/images/league logo/LCK-icon.png");
-const lecIcon = require("@/assets/images/league logo/LEC-icon.png");
-const lplIcon = require("@/assets/images/league logo/LPL-icon.png");
-const lcsIcon = require("@/assets/images/league logo/LCS-icon.png");
+const regionalFrame = require("@/assets/images/image frames/RegionalFrame.png");
+const internationalFrame = require("@/assets/images/image frames/InternationalFrame.png");
+const mainNewsFrame1 = require("@/assets/images/image frames/MainNewsFrame1.png");
+const mainNewsFrame2 = require("@/assets/images/image frames/MainNewsFrame2.png");
+const miniNewsFrame1 = require("@/assets/images/image frames/MiniNewsFrame1.png");
+const miniNewsFrame2 = require("@/assets/images/image frames/MiniNewsFrame2.png");
+const highlightFrame1 = require("@/assets/images/image frames/HighlightFrame1.png");
+const highlightFrame2 = require("@/assets/images/image frames/HighlightFrame2.png");
+const highlightFrame3 = require("@/assets/images/image frames/HighlightFrame3.png");
+const highlightFrame4 = require("@/assets/images/image frames/HighlightFrame4.png");
+const gameNav = require("@/assets/images/image frames/GameNav.png");
 
 const loadFonts = async () => {
   await Font.loadAsync({
@@ -44,6 +51,10 @@ const HomeScreen = ({ navigation }) => {
     <SwipeDetector onSwipe={handleSwipe}>
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.container}>
+          <View style={[styles.topNavContainer, { marginBottom: 40 }]}>
+            <Image source={gameNav}></Image>
+            <Ionicons name="notifications" size={36} color="white" />
+          </View>
           <View style={styles.headerContainer}>
             <Text style={styles.textRegularHeader2XL}>League of Legends</Text>
             <View style={styles.headerarrowContainer}>
@@ -62,7 +73,7 @@ const HomeScreen = ({ navigation }) => {
           <View
             style={[
               styles.teamsfollowedContainer,
-              { marginBottom: 24 },
+              { marginBottom: 40 },
               { marginLeft: 20 },
             ]}
           >
@@ -82,34 +93,131 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </View>
 
-          <View style={styles.upcomingContainer}>
-            <Text
-              style={[
-                styles.textRegularHeaderL,
-                { width: 192 },
-                { marginBottom: 12 },
-              ]}
+          <View style={styles.feedContainer}>
+            <View
+              style={[styles.miniFeedContainer, { backgroundColor: "#05090C" }]}
             >
-              Upcoming Matches
-            </Text>
-            <ScrollView
-              horizontal={true}
-              contentContainerStyle={styles.frameScrollContentContainer}
-              showsHorizontalScrollIndicator={false}
+              <Text
+                style={[
+                  styles.textRegularHeaderL,
+                  { width: 192 },
+                  { marginBottom: 12 },
+                ]}
+              >
+                Upcoming Matches
+              </Text>
+              <ScrollView
+                horizontal={true}
+                contentContainerStyle={styles.frameScrollContentContainer}
+                showsHorizontalScrollIndicator={false}
+              >
+                <Image source={mainMatchFrame} style={[{ marginRight: 12 }]} />
+                <Image source={miniMatchFrame1} style={[{ marginRight: 12 }]} />
+                <Image source={miniMatchFrame2} style={[{ marginRight: 12 }]} />
+                <Image source={miniMatchFrame3} style={[{ marginRight: 12 }]} />
+                <View style={styles.morebuttonContainer}>
+                  <FontAwesome6 name="arrow-right" size={28} color="black" />
+                  <TouchableOpacity onPress={() => alert("Coming Soon")}>
+                    <Text style={styles.morebuttonText}>MORE</Text>
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </View>
+
+            <View
+              style={[styles.miniFeedContainer, { backgroundColor: "#0F1A24" }]}
             >
-              <Image source={mainMatchFrame} style={[{ marginRight: 12 }]} />
-              <Image source={miniMatchFrame1} style={[{ marginRight: 12 }]} />
-              <Image source={miniMatchFrame2} style={[{ marginRight: 12 }]} />
-              <Image source={miniMatchFrame3} style={[{ marginRight: 12 }]} />
-              <View style={styles.morebuttonContainer}>
-                <FontAwesome6 name="arrow-right" size={28} color="black" />
-                <TouchableOpacity
-                  onPress={() => navigation.navigate("Regional")}
-                >
-                  <Text style={styles.morebuttonText}>MORE</Text>
-                </TouchableOpacity>
-              </View>
-            </ScrollView>
+              <Text
+                style={[
+                  styles.textRegularHeaderL,
+                  { width: 244 },
+                  { marginBottom: 12 },
+                ]}
+              >
+                Events & Tournaments
+              </Text>
+              <ScrollView
+                horizontal={true}
+                contentContainerStyle={styles.frameScrollContentContainer}
+                showsHorizontalScrollIndicator={false}
+              >
+                <Image source={regionalFrame} style={[{ marginRight: 12 }]} />
+                <Image
+                  source={internationalFrame}
+                  style={[{ marginRight: 12 }]}
+                />
+                <View style={styles.morebuttonContainer}>
+                  <FontAwesome6 name="arrow-right" size={28} color="black" />
+                  <TouchableOpacity onPress={() => alert("Coming Soon")}>
+                    <Text style={styles.morebuttonText}>MORE</Text>
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </View>
+
+            <View
+              style={[styles.miniFeedContainer, { backgroundColor: "#0F1A24" }]}
+            >
+              <Text
+                style={[
+                  styles.textRegularHeaderL,
+                  { width: 232 },
+                  { marginBottom: 12 },
+                ]}
+              >
+                Latest News & Articles
+              </Text>
+              <ScrollView
+                horizontal={true}
+                contentContainerStyle={styles.frameScrollContentContainer}
+                showsHorizontalScrollIndicator={false}
+              >
+                <Image source={mainNewsFrame1} style={[{ marginRight: 12 }]} />
+                <Image source={mainNewsFrame2} style={[{ marginRight: 12 }]} />
+                <Image source={miniNewsFrame1} style={[{ marginRight: 12 }]} />
+                <Image source={miniNewsFrame2} style={[{ marginRight: 12 }]} />
+                <View style={styles.morebuttonContainer}>
+                  <FontAwesome6 name="arrow-right" size={28} color="black" />
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("Regional")}
+                  >
+                    <Text style={styles.morebuttonText}>MORE</Text>
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </View>
+
+            <View
+              style={[styles.miniFeedContainer, { backgroundColor: "#0F1A24" }]}
+            >
+              <Text
+                style={[
+                  styles.textRegularHeaderL,
+                  { width: 188 },
+                  { marginBottom: 12 },
+                ]}
+              >
+                Recent Highlights
+              </Text>
+              <ScrollView
+                horizontal={true}
+                contentContainerStyle={styles.frameScrollContentContainer}
+                showsHorizontalScrollIndicator={false}
+              >
+                <Image source={highlightFrame1} style={[{ marginRight: 12 }]} />
+                <Image source={highlightFrame2} style={[{ marginRight: 12 }]} />
+                <Image source={highlightFrame3} style={[{ marginRight: 12 }]} />
+                <Image source={highlightFrame4} style={[{ marginRight: 12 }]} />
+                <View style={styles.morebuttonContainer}>
+                  <FontAwesome6 name="arrow-right" size={28} color="black" />
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate("Regional")}
+                  >
+                    <Text style={styles.morebuttonText}>MORE</Text>
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </View>
           </View>
         </SafeAreaView>
       </View>
@@ -166,6 +274,13 @@ const styles = StyleSheet.create({
     fontSize: 10,
     marginBottom: 4,
   },
+  topNavContainer: {
+    width: 353,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginLeft: 20,
+  },
   headerContainer: {
     width: 276,
     flexDirection: "column",
@@ -178,15 +293,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 4,
   },
-  upcomingContainer: {
+  feedContainer: {
+    width: 393,
+    flexDirection: "column",
+  },
+  miniFeedContainer: {
     width: 393,
     height: 360,
-    backgroundColor: "#05090C",
     flexDirection: "column",
     justifyContent: "flex-end",
     paddingBottom: 12,
     paddingTop: 72,
     paddingLeft: 20,
+    marginBottom: -200,
   },
   teamsfollowedContainer: {
     width: "100%",
