@@ -14,8 +14,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Font from "expo-font";
 import SwipeDetector from "@/components/SwipeDetector/SwipeDetectorUpDown";
 
-const progressYellow = require("@/assets/images/image frames/ProgressBarYellow.png");
-const bigButton = require("@/assets/images/image frames/BigButton.png");
+const progressBlue = require("@/assets/images/image frames/ProgressBarBlue.png");
+const lolNoti = require("@/assets/images/image frames/LoLNotification.png");
+const valoNoti = require("@/assets/images/image frames/ValoNotification.png");
 const gameNav = require("@/assets/images/image frames/GameNav.png");
 
 const loadFonts = async () => {
@@ -25,7 +26,7 @@ const loadFonts = async () => {
   });
 };
 
-const FeatureIntroScreen = ({ navigation }) => {
+const HighlightSettingScreen = ({ navigation }) => {
   const handleSwipe = (directionY) => {
     if (directionY === "up" || directionY === "down") {
       navigation.navigate("Upcoming");
@@ -43,28 +44,28 @@ const FeatureIntroScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <Image
-            source={progressYellow}
-            style={[{ marginBottom: 24 }, { marginLeft: 24 }]}
+            source={progressBlue}
+            style={[{ marginBottom: 12 }, { marginLeft: 24 }]}
           ></Image>
-          <View style={styles.headerContainer}>
-            <Text style={styles.textRegularHeader2XL}>
-              Swift Match Highlight
-            </Text>
-            <View style={styles.headerarrowContainer}>
-              <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
-                <Text
-                  style={[
-                    styles.textRegularHeader2XL,
-                    { marginRight: 12 },
-                    { color: "#A3AAB1" },
-                  ]}
-                >
-                  Continue
-                </Text>
-              </TouchableOpacity>
-              <AntDesign name="caretdown" size={20} color="#A3AAB1" />
-            </View>
-          </View>
+          {/* <View style={styles.headerContainer}>
+              <Text style={styles.textRegularHeader2XL}>
+                Swift Match Highlight
+              </Text>
+              <View style={styles.headerarrowContainer}>
+                <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
+                  <Text
+                    style={[
+                      styles.textRegularHeader2XL,
+                      { marginRight: 12 },
+                      { color: "#A3AAB1" },
+                    ]}
+                  >
+                    Continue
+                  </Text>
+                </TouchableOpacity>
+                <AntDesign name="caretdown" size={20} color="#A3AAB1" />
+              </View>
+            </View> */}
 
           <View style={styles.featureFrame}>
             <View style={styles.featureTopFrame}>
@@ -76,47 +77,29 @@ const FeatureIntroScreen = ({ navigation }) => {
                   <FontAwesome6 name="youtube" size={24} color="black" />
                 </View>
               </View>
-              <Text style={[styles.textRegularXL, { color: "#0A1118" }]}>
-                Feature Introduction
+              <Text style={[styles.textRegularXL, { width: 280 }]}>
+                Highlight Settings
               </Text>
             </View>
             <View style={styles.featureBotFrame}>
-              <View style={[{ width: 300 }]}>
-                <Text
-                  style={[
-                    styles.textRegularXS,
-                    { color: "#0A1118" },
-                    { textAlign: "center" },
-                    { marginBottom: 8 },
-                  ]}
-                >
-                  Simultaneous Viewing
-                </Text>
-                <Text
-                  style={[
-                    styles.textRegular2XS,
-                    { color: "#A3AAB1" },
-                    { textAlign: "center" },
-                  ]}
-                >
-                  Enjoy Strafe esports newest swift match feature where you can
-                  now view multiple games Simultaneously through real-time
-                  highlights from various streams.
-                </Text>
-              </View>
+              <ScrollView
+                horizontal={false}
+                vertical={true}
+                contentContainerStyle={styles.matchScrollContainer}
+                showsVerticalScrollIndicator={false}
+              >
+                <Image source={lolNoti} style={[{ marginBottom: -40 }]}></Image>
+                <Image source={valoNoti}></Image>
+              </ScrollView>
               <View style={styles.botNavContainer}>
-                <View
-                  style={[
-                    styles.nextbuttonContainer,
-                    { backgroundColor: "white" },
-                  ]}
-                >
-                  <FontAwesome6 name="arrow-left" size={24} color="white" />
-                </View>
-                <Image source={bigButton}></Image>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("SelectGames")}
                 >
+                  <View style={styles.nextbuttonContainer}>
+                    <FontAwesome6 name="arrow-left" size={24} color="black" />
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => alert("Coming Soon")}>
                   <View style={styles.nextbuttonContainer}>
                     <FontAwesome6 name="arrow-right" size={24} color="black" />
                   </View>
@@ -214,12 +197,12 @@ const styles = StyleSheet.create({
     height: 400,
     flexDirection: "column",
     marginLeft: 20,
-    marginTop: 32,
+    marginTop: 12,
   },
   featureTopFrame: {
     width: "100%",
     height: 200,
-    backgroundColor: "#F6C751",
+    backgroundColor: "#2A50EB",
     flexDirection: "column",
     justifyContent: "space-between",
     padding: 16,
@@ -228,11 +211,14 @@ const styles = StyleSheet.create({
   },
   featureBotFrame: {
     width: "100%",
-    height: 200,
+    height: 468,
     backgroundColor: "white",
     flexDirection: "column",
     justifyContent: "space-between",
-    padding: 16,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 16,
+    paddingBottom: 16,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
@@ -246,19 +232,26 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: "#A3AAB1",
+    borderColor: "#9CE9D5",
     justifyContent: "center",
     alignItems: "center",
   },
-  introText: {
-    width: 300,
-    height: 92,
+  searchContainer: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+  matchScrollContainer: {
+    flexDirection: "column",
+    alignItems: "center",
   },
   botNavContainer: {
     width: "100%",
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-between",
+    marginTop: 12,
   },
   nextbuttonContainer: {
     width: 48,
@@ -271,4 +264,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FeatureIntroScreen;
+export default HighlightSettingScreen;

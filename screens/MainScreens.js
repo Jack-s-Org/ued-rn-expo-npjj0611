@@ -27,6 +27,8 @@ import StreamScreen from "./DiscoverScreen";
 import UpcomingScreen from "./UpcomingScreen";
 import LivestreamScreen from "./LivestreamScreen";
 import FeatureIntroScreen from "./FeatureIntroScreen";
+import SelectGamesScreen from "./SelectGamesScreen";
+import HighlightSettingScreen from "./HighlightSettingScreen";
 
 const MainStacks = createNativeStackNavigator();
 const HomeStacks = createNativeStackNavigator();
@@ -63,6 +65,11 @@ const HomeScreens = () => {
         component={StreamScreen}
         options={{ animation: "slide_from_bottom" }}
       />
+      <HomeStacks.Screen
+        name="Livestream"
+        component={LivestreamScreen}
+        options={{ animation: "slide_from_bottom" }}
+      />
     </HomeStacks.Navigator>
   );
 };
@@ -77,14 +84,9 @@ const StreamScreens = () => {
           headerShown: false,
         }}
       />
-      <StreamStacks.Screen
+      {/* <StreamStacks.Screen
         name="Livestream"
         component={LivestreamScreen}
-        options={{ animation: "slide_from_bottom" }}
-      />
-      {/* <StreamStacks.Screen
-        name="FeatureIntro"
-        component={FeatureIntroScreen}
         options={{ animation: "slide_from_bottom" }}
       /> */}
     </StreamStacks.Navigator>
@@ -111,7 +113,7 @@ const MainTabs = ({ navigation }) => {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={HomeScreens}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -144,7 +146,7 @@ const MainTabs = ({ navigation }) => {
       />
 
       <Tab.Screen
-        name="Stream"
+        name="Streaming"
         component={StreamScreens}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -269,6 +271,22 @@ const MainScreens = () => {
         component={FeatureIntroScreen}
         options={{
           animation: "slide_from_bottom", // Custom animation
+          headerShown: false, // Hide header if needed
+        }}
+      />
+      <MainStacks.Screen
+        name="SelectGames" // Add FeatureIntroScreen in MainStacks
+        component={SelectGamesScreen}
+        options={{
+          animation: "slide_from_right", // Custom animation
+          headerShown: false, // Hide header if needed
+        }}
+      />
+      <MainStacks.Screen
+        name="HighlightSetting" // Add FeatureIntroScreen in MainStacks
+        component={HighlightSettingScreen}
+        options={{
+          animation: "slide_from_right", // Custom animation
           headerShown: false, // Hide header if needed
         }}
       />
