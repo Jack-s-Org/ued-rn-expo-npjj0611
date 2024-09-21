@@ -42,7 +42,9 @@ const RegionalScreen = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
           <View style={styles.headerContainer}>
             <Text style={styles.textRegularHeader}>REGIONAL LEAGUES</Text>
-            <Feather name="chevron-down" size={24} color="white" />
+            <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
+              <Feather name="chevron-down" size={24} color="white" />
+            </TouchableOpacity>
           </View>
 
           <View style={styles.strafelolContainer}>

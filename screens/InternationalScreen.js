@@ -43,7 +43,9 @@ const InternationalScreen = ({ navigation }) => {
             <Text style={[styles.textRegularHeader, { width: 248 }]}>
               INTERNATIONAL EVENTS
             </Text>
-            <Feather name="chevron-down" size={24} color="white" />
+            <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
+              <Feather name="chevron-down" size={24} color="white" />
+            </TouchableOpacity>
           </View>
           <View style={styles.strafelolContainer}>
             <Image

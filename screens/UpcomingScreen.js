@@ -14,9 +14,6 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Font from "expo-font";
 import SwipeDetector from "@/components/SwipeDetector/SwipeDetectorUpDown";
 
-const g2Logo = require("@/assets/images/teams logo/G2-Logo.jpg");
-const t1Logo = require("@/assets/images/teams logo/T1-Logo.jpeg");
-const drxLogo = require("@/assets/images/teams logo/DRX-Logo.jpg");
 const mainMatchFrame = require("@/assets/images/image frames/MainMatchFrame.png");
 const miniMatchFrame1 = require("@/assets/images/image frames/MiniMatchFrame1.png");
 const miniMatchFrame2 = require("@/assets/images/image frames/MiniMatchFrame2.png");
@@ -40,10 +37,10 @@ const loadFonts = async () => {
   });
 };
 
-const HomeScreen = ({ navigation }) => {
+const UpcomingScreen = ({ navigation }) => {
   const handleSwipe = (directionY) => {
     if (directionY === "up" || directionY === "down") {
-      navigation.navigate("Upcoming");
+      navigation.navigate("Home");
     }
   };
 
@@ -51,28 +48,26 @@ const HomeScreen = ({ navigation }) => {
     <SwipeDetector onSwipe={handleSwipe}>
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.container}>
-          <View style={[styles.topNavContainer, { marginBottom: 40 }]}>
+          <View style={[styles.topNavContainer, { marginBottom: 0 }]}>
             <Image source={gameNav}></Image>
             <Ionicons name="notifications" size={36} color="white" />
           </View>
-          <View style={styles.headerContainer}>
+          {/* <View style={styles.headerContainer}>
             <Text style={styles.textRegularHeader2XL}>League of Legends</Text>
             <View style={styles.headerarrowContainer}>
-              <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
-                <Text
-                  style={[
-                    styles.textRegularHeader2XL,
-                    { marginRight: 12 },
-                    { color: "#A3AAB1" },
-                  ]}
-                >
-                  Feed
-                </Text>
-              </TouchableOpacity>
+              <Text
+                style={[
+                  styles.textRegularHeader2XL,
+                  { marginRight: 12 },
+                  { color: "#A3AAB1" },
+                ]}
+              >
+                Feed
+              </Text>
               <AntDesign name="caretdown" size={20} color="#A3AAB1" />
             </View>
-          </View>
-          <View
+          </View> */}
+          {/* <View
             style={[
               styles.teamsfollowedContainer,
               { marginBottom: 40 },
@@ -93,7 +88,7 @@ const HomeScreen = ({ navigation }) => {
                 <Image source={drxLogo} style={styles.teamLogo} />
               </View>
             </View>
-          </View>
+          </View> */}
 
           <View style={styles.feedContainer}>
             <View
@@ -113,7 +108,15 @@ const HomeScreen = ({ navigation }) => {
                 contentContainerStyle={styles.frameScrollContentContainer}
                 showsHorizontalScrollIndicator={false}
               >
-                <Image source={mainMatchFrame} style={[{ marginRight: 12 }]} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Stream")}
+                  style={{ marginRight: 12 }}
+                >
+                  <Image
+                    source={mainMatchFrame}
+                    style={{ resizeMode: "contain" }} // Ensure the image maintains its aspect ratio without cropping
+                  />
+                </TouchableOpacity>
                 <Image source={miniMatchFrame1} style={[{ marginRight: 12 }]} />
                 <Image source={miniMatchFrame2} style={[{ marginRight: 12 }]} />
                 <Image source={miniMatchFrame3} style={[{ marginRight: 12 }]} />
@@ -143,11 +146,24 @@ const HomeScreen = ({ navigation }) => {
                 contentContainerStyle={styles.frameScrollContentContainer}
                 showsHorizontalScrollIndicator={false}
               >
-                <Image source={regionalFrame} style={[{ marginRight: 12 }]} />
-                <Image
-                  source={internationalFrame}
-                  style={[{ marginRight: 12 }]}
-                />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Regional")}
+                  style={{ marginRight: 12 }}
+                >
+                  <Image
+                    source={regionalFrame}
+                    style={{ resizeMode: "contain" }} // Ensure the image maintains its aspect ratio without cropping
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("International")}
+                  style={{ marginRight: 12 }}
+                >
+                  <Image
+                    source={internationalFrame}
+                    style={{ resizeMode: "contain" }} // Ensure the image maintains its aspect ratio without cropping
+                  />
+                </TouchableOpacity>
                 <View style={styles.morebuttonContainer}>
                   <FontAwesome6 name="arrow-right" size={28} color="black" />
                   <TouchableOpacity onPress={() => alert("Coming Soon")}>
@@ -307,7 +323,7 @@ const styles = StyleSheet.create({
     paddingBottom: 12,
     paddingTop: 72,
     paddingLeft: 20,
-    marginBottom: -200,
+    marginBottom: 0,
   },
   teamsfollowedContainer: {
     width: "100%",
@@ -358,4 +374,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default UpcomingScreen;

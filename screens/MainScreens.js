@@ -23,11 +23,13 @@ import RegionalScreen from "./RegionalScreen";
 import AppDrawer from "./AppDrawer";
 import SettingsScreen from "./SettingsScreen";
 import AddScreen from "./AddScreen";
-import MatchFeedScreen from "./MatchFeedScreen";
 import StreamScreen from "./DiscoverScreen";
+import UpcomingScreen from "./UpcomingScreen";
+import LivestreamScreen from "./LivestreamScreen";
 
 const MainStacks = createNativeStackNavigator();
 const HomeStacks = createNativeStackNavigator();
+const StreamStacks = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Empty = () => null;
@@ -41,6 +43,11 @@ const HomeScreens = () => {
         options={{ headerShown: false }}
       />
       <HomeStacks.Screen
+        name="Upcoming"
+        component={UpcomingScreen}
+        options={{ animation: "slide_from_bottom" }}
+      />
+      <HomeStacks.Screen
         name="Regional"
         component={RegionalScreen}
         options={{ animation: "slide_from_bottom" }}
@@ -51,11 +58,30 @@ const HomeScreens = () => {
         options={{ animation: "slide_from_bottom" }}
       />
       <HomeStacks.Screen
-        name="MatchFeed"
-        component={MatchFeedScreen}
+        name="Stream"
+        component={StreamScreen}
         options={{ animation: "slide_from_bottom" }}
       />
     </HomeStacks.Navigator>
+  );
+};
+
+const StreamScreens = () => {
+  return (
+    <StreamStacks.Navigator screenOptions={{ headerShown: false }}>
+      <StreamStacks.Screen
+        name="Stream"
+        component={StreamScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <StreamStacks.Screen
+        name="Livestream"
+        component={LivestreamScreen}
+        options={{ animation: "slide_from_bottom" }}
+      />
+    </StreamStacks.Navigator>
   );
 };
 
@@ -113,7 +139,7 @@ const MainTabs = ({ navigation }) => {
 
       <Tab.Screen
         name="Stream"
-        component={StreamScreen}
+        component={StreamScreens}
         options={{
           tabBarIcon: ({ color, size }) => (
             <View style={{ alignItems: "center", justifyContent: "center" }}>

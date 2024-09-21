@@ -40,7 +40,9 @@ const StreamScreen = ({ navigation }) => {
           <Text style={[styles.textRegularHeader, { width: 212 }]}>
             MATCH FEED
           </Text>
-          <Feather name="chevron-down" size={24} color="white" />
+          <TouchableOpacity onPress={() => navigation.navigate("Upcoming")}>
+            <Feather name="chevron-down" size={24} color="white" />
+          </TouchableOpacity>
         </View>
 
         <Image source={matchInfo}></Image>
@@ -58,7 +60,12 @@ const StreamScreen = ({ navigation }) => {
             <Text style={[styles.textRegularXS, { color: "#05090C" }]}>
               Live Viewership
             </Text>
-            <Image source={viewerBar} style={[{ marginTop: 40 }]}></Image>
+            <TouchableOpacity onPress={() => navigation.navigate("Livestream")}>
+              <Image
+                source={viewerBar}
+                style={{ resizeMode: "contain" }} // Ensure the image maintains its aspect ratio without cropping
+              />
+            </TouchableOpacity>
             <View style={styles.infoContainer}>
               <Text style={[styles.textBold3XS, { color: "#11205E" }]}>
                 TOTAL VIEWERSHIP
