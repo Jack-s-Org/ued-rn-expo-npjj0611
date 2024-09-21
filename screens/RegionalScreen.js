@@ -151,7 +151,7 @@ const RegionalScreen = ({ navigation }) => {
             <View style={styles.morebuttonContainer}>
               <FontAwesome6 name="arrow-right" size={28} color="black" />
               <TouchableOpacity
-                onPress={() => navigation.navigate("International")}
+                onPress={() => navigation.navigate("MainLeague")}
               >
                 <Text style={styles.morebuttonText}>MORE</Text>
               </TouchableOpacity>
